@@ -35,7 +35,7 @@ connection.connect(function(err) {
 });
 
 app.get("/", function(req, res) {
-  connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
+  connection.query("SELECT * FROM customers;", function(err, data) {
     if (err) {
       throw err;
     }
@@ -45,21 +45,6 @@ app.get("/", function(req, res) {
 });
 
 
-
-
-
-
-
-
-app.get("/customer", function(req, res) {
-  connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
-    if (err) {
-      throw err;
-    }
-    res.render("index", { customers: data });
-    console.log(data);
-  });
-});
 
 app.post("/", function(req, res) {
   connection.query("INSERT INTO customers (customer) VALUES (?)", [req.body.customer], function(err, result) {
