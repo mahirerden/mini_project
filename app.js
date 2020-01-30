@@ -39,7 +39,7 @@ app.get("/", function(req, res) {
     if (err) {
       throw err;
     }
-    res.render("index", { wishes: data });
+    res.render("index", { customers: data });
   });
 });
 
