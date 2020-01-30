@@ -21,8 +21,8 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "",
-  database: "wishes_db"
+  password: "root",
+  database: "carshowroomDB"
 });
 
 connection.connect(function(err) {
