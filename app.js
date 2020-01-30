@@ -40,6 +40,26 @@ app.get("/", function(req, res) {
       throw err;
     }
     res.render("index", { customers: data });
+    console.log(data);
+  });
+});
+
+app.get("/card", function(req, res) {
+  connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
+    if (err) {
+      throw err;
+    }
+    res.render("index", { customers: data });
+    console.log(data);
+  });
+});
+
+app.post("/", function(req, res) {
+  connection.query("INSERT INTO customers (customer) VALUES (?)", [req.body.wish], function(err, result) {
+    if (err) {
+      throw err;
+    }
+    res.redirect("/");
   });
 });
 
