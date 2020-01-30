@@ -59,17 +59,15 @@ app.get("/card", function(req, res) {
 });
 
 app.post("/", function(req, res) {
-  connection.query(
-    "INSERT INTO customers (customer) VALUES (?)",
-    [req.body.wish],
-    function(err, result) {
-      if (err) {
-        throw err;
-      }
-      res.redirect("/");
+  connection.query("INSERT INTO customers (customer) VALUES (?)", [req.body.customer], function(err, result) {
+    if (err) {
+      throw err;
     }
   );
 });
+
+
+
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
