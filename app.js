@@ -22,7 +22,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "",
-  database: "wishes_db"
+  database: "carshowroomdb"
 });
 
 connection.connect(function(err) {
@@ -32,6 +32,15 @@ connection.connect(function(err) {
   }
 
   console.log("connected as id " + connection.threadId);
+});
+
+app.get("/", function(req, res) {
+  connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
+    if (err) {
+      throw err;
+    }
+    res.render("index", { wishes: data });
+  });
 });
 
 // Start our server so that it can begin listening to client requests.
