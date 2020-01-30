@@ -12,14 +12,16 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
 
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "root",
+  password: "",
   database: "carshowroomdb"
 });
 
@@ -33,10 +35,7 @@ connection.connect(function(err) {
 });
 
 app.get("/", function(req, res) {
-  connection.query("SELECT * FROM carshowroomdb.customers;", function(
-    err,
-    data
-  ) {
+  connection.query("SELECT * FROM customers;", function(err, data) {
     if (err) {
       throw err;
     }
@@ -46,21 +45,6 @@ app.get("/", function(req, res) {
 });
 
 
-
-
-
-
-
-
-app.get("/customer", function(req, res) {
-  connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
-    if (err) {
-      throw err;
-    }
-    res.render("index", { customers: data });
-    console.log(data);
-  });
-});
 
 app.post("/", function(req, res) {
   connection.query("INSERT INTO customers (customer) VALUES (?)", [req.body.customer], function(err, result) {

@@ -1,0 +1,20 @@
+<h1>Car Showroom</h1>
+
+<p>Creators</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+    {{#each customers}}
+    <li>
+        <p><span class="label">Customer ID:</span> {{this.customer_id}}</p>
+        <p><span class="label">First Name:</span> {{this.first_name}}</p>
+        <p><span class="label">LastName:</span> {{this.last_name}}</p>
+        <p><span class="label">Customer ID:</span> {{this.address}}</p>
+        <p><span class="label">Email:</span> {{this.email}}</p>
+        <p><span class="label">Phone Number:</span> {{this.phone}}</p>
+        <p><span class="label">Creditcard Type:</span> {{this.creditcard_type}}</p>
+        <p><span class="label">Creditcard Number:</span> {{this.creditcard_number}}</p>
+
+    </li>
+    {{/each}}
+</ul>
