@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "",
+  password: "root",
   database: "carshowroomdb"
 });
 
@@ -45,11 +45,15 @@ app.get("/", function(req, res) {
   });
 });
 
-app.get("/card", function(req, res) {
-  connection.query("SELECT * FROM carshowroomdb.customers;", function(
-    err,
-    data
-  ) {
+
+
+
+
+
+
+
+app.get("/customer", function(req, res) {
+  connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
     if (err) {
       throw err;
     }
@@ -63,7 +67,8 @@ app.post("/", function(req, res) {
     if (err) {
       throw err;
     }
-  );
+    res.redirect("/");
+  });
 });
 
 
