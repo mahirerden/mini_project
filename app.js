@@ -44,7 +44,14 @@ app.get("/", function(req, res) {
   });
 });
 
-app.get("/card", function(req, res) {
+
+
+
+
+
+
+
+app.get("/customer", function(req, res) {
   connection.query("SELECT * FROM carshowroomdb.customers;", function(err, data) {
     if (err) {
       throw err;
